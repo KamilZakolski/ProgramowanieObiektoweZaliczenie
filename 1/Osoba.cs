@@ -13,8 +13,8 @@ namespace _1
             ImięNazwisko = imięNazwisko;
         }
 
-        private string imię;
-        public string nazwisko;
+        private string imię = "";
+        public string nazwisko = "";
         public DateTime? DataUrodzenia = null;
         public DateTime? DataŚmierci = null;
 
@@ -62,6 +62,7 @@ namespace _1
                     return DataŚmierci.Value - DataUrodzenia.Value;
                 }
             }
+            
         }
     }
 }
