@@ -1,10 +1,14 @@
 ﻿using _1;
 
-Osoba osoba = new("Adam Nowak");
+Osoba osoba = new("Adam Nowak")
+{
+    DataUrodzenia = new DateTime(2000, 1, 1),
+    DataŚmierci = new DateTime(2023, 5, 10)
+};
 
-Console.WriteLine(osoba.ImięNazwisko);
-Console.WriteLine(osoba.Imię);
-Console.WriteLine(osoba.nazwisko);
-osoba.DataUrodzenia = new DateTime(2013, 5, 20);
-osoba.DataŚmierci = new DateTime(2020, 5, 20);
-Console.WriteLine(osoba.Wiek);
+Console.WriteLine(
+    $"imię: {osoba.Imię}," +
+    $"nazwisko: {osoba.nazwisko}," +
+    $"Imię i nazwisko: {osoba.ImięNazwisko}," +
+    $"wiek: {osoba.Wiek.Value.Days / 365} lat"
+    );

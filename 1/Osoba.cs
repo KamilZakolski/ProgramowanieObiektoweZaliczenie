@@ -62,7 +62,6 @@ namespace _1
                     return DataŚmierci.Value - DataUrodzenia.Value;
                 }
             }
-            
         }
     }
 }
