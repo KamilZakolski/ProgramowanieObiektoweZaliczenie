@@ -13,19 +13,19 @@ namespace _1
             ImięNazwisko = imięNazwisko;
         }
 
-        private string imię = "";
-        public string nazwisko = "";
+        private string? imię;
+        public string? nazwisko;
         public DateTime? DataUrodzenia = null;
         public DateTime? DataŚmierci = null;
 
-        public string Imię
+        public string? Imię
         {
             get => imię;
             set
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException(nameof(value));
+                    throw new ArgumentNullException(nameof(Imię));
                 }
                 else
                 {
