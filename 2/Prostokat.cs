@@ -60,15 +60,11 @@ namespace _2
 
             if (!wysokoscArkusza0.ContainsKey(x))
             {
-                throw new ArgumentException("Nieprawidłowy klucza, klucz powinien równać się: A lub B lub C.");
+                throw new ArgumentException("Nieprawidłowy klucz, klucz powinien równać się: A lub B lub C.");
             }
 
             byte i;
-
-            if (!byte.TryParse(format[1].ToString(), out i))
-            {
-                throw new ArgumentException("Nieprawidłowy format indeksu, indeks powinien być liczbą całkowitą");
-            }
+            byte.TryParse(format[1].ToString(), out i);
 
             decimal wysokosc = wysokoscArkusza0[x];
             double pierwiastekZDwoch = Math.Sqrt(2);
