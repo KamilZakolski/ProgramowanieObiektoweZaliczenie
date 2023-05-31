@@ -1,7 +1,7 @@
 ﻿using _2;
 
 // Wypisanie wyliczonych długośći
-Prostokat prostokat = Prostokat.ArkuszPapieru("A2");
+Prostokat prostokat = Prostokat.ArkuszPapieru("C4");
 Console.WriteLine($"Długość boku A: {prostokat.BokA} mm");
 Console.WriteLine($"Długość boku B: {prostokat.BokB} mm");
 
