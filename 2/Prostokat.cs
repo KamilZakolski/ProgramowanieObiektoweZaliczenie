@@ -42,12 +42,40 @@ namespace _2
             }
         }
 
-        public static Dictionary<char, decimal> wysokośćArkusza0 = new Dictionary<char, decimal>()
+        public static Dictionary<char, decimal> wysokoscArkusza0 = new Dictionary<char, decimal>()
         {
             ['A'] = 1189,
             ['B'] = 1414,
             ['C'] = 1297
         };
 
+        public static Prostokat ArkuszPapieru(string format)
+        {
+            if (format.Length != 2)
+            {
+                throw new ArgumentException("Nieprawidłowy format arkusza, arkusz powinien być w postaci 'Xi'.");
+            }
+
+            char x = format[0];
+
+            if (!wysokoscArkusza0.ContainsKey(x))
+            {
+                throw new ArgumentException("Nieprawidłowy klucza, klucz powinien równać się: A lub B lub C.");
+            }
+
+            byte i;
+
+            if (!byte.TryParse(format[1].ToString(), out i))
+            {
+                throw new ArgumentException("Nieprawidłowy format indeksu, indeks powinien być liczbą całkowitą");
+            }
+
+            decimal wysokosc = wysokoscArkusza0[x];
+            double pierwiastekZDwoch = Math.Sqrt(2);
+            double bokA = Convert.ToDouble(wysokosc) / Math.Pow(pierwiastekZDwoch, i);
+            double bokB = bokA / pierwiastekZDwoch;
+
+            return new Prostokat(bokA, bokB);
+        }
     }
 }
