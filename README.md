@@ -1,1 +1,1 @@
-Zadania zaliczeniowa na przedmiot: Programowanie Obiektowe
+Zadania zaliczeniowe na przedmiot: Programowanie Obiektowe
