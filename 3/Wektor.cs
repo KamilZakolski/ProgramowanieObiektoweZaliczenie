@@ -8,32 +8,32 @@ namespace _3
 {
     public class Wektor
     {
-        private double[] współrzędne;
+        private double[] wspolrzedne;
 
         public Wektor(byte wymiar)
         {
-            współrzędne = new double[wymiar];
+            wspolrzedne = new double[wymiar];
         }
 
         public Wektor(params double[] współrzędne)
         {
-            this.współrzędne = współrzędne;
+            this.wspolrzedne = współrzędne;
         }
 
         public double this[byte indeks]
         {
-            get { return współrzędne[indeks]; }
-            set { współrzędne[indeks] = value; }
+            get { return wspolrzedne[indeks]; }
+            set { wspolrzedne[indeks] = value; }
         }
 
-        public double Długość
+        public double Dlugosc
         {
             get { return Math.Sqrt(Obliczenia.IloczynSkalarny(this, this)); }
         }
 
         public byte Wymiar
         {
-            get { return (byte)współrzędne.Length; }
+            get { return (byte)wspolrzedne.Length; }
         }
 
         public static Wektor Suma(params Wektor[] wektory)
@@ -48,22 +48,22 @@ namespace _3
 
         public static Wektor operator -(Wektor v1, Wektor v2)
         {
-            return Obliczenia.Odejmij(v1, v2);
+            return Obliczenia.Odejmowanie(v1, v2);
         }
 
         public static Wektor operator *(Wektor v, double skalar)
         {
-            return Obliczenia.Pomnóż(v, skalar);
+            return Obliczenia.Mnozenie(v, skalar);
         }
 
         public static Wektor operator *(double skalar, Wektor v)
         {
-            return Obliczenia.Pomnóż(skalar, v);
+            return Obliczenia.Mnozenie(skalar, v);
         }
 
         public static Wektor operator /(Wektor v, double skalar)
         {
-            return Obliczenia.Podziel(v, skalar);
+            return Obliczenia.Dzielenie(v, skalar);
         }
 
 
@@ -71,7 +71,7 @@ namespace _3
         public override string ToString()
         {
             string separator = " | ";
-            string result = string.Join(separator, współrzędne);
+            string result = string.Join(separator, wspolrzedne);
             return $"({result})";
         }
 

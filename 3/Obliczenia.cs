@@ -12,7 +12,7 @@ namespace _3
         public static double IloczynSkalarny(Wektor v1, Wektor v2)
         {
             if (v1.Wymiar != v2.Wymiar)
-                throw new ArgumentException("Wektory muszą mieć ten sam wymiar.");
+                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
 
             double suma = 0;
             for (byte i = 0; i < v1.Wymiar; i++)
@@ -25,13 +25,13 @@ namespace _3
         public static Wektor Suma(params Wektor[] wektory)
         {
             if (wektory.Length == 0)
-                throw new ArgumentException("Nie podano żadnego wektora.");
+                throw new ArgumentException("Nie podano wektora");
 
             byte wymiar = wektory[0].Wymiar;
             for (int i = 1; i < wektory.Length; i++)
             {
                 if (wektory[i].Wymiar != wymiar)
-                    throw new ArgumentException("Wektory muszą mieć ten sam wymiar.");
+                    throw new ArgumentException("Wektory muszą być tego samego wymiaru");
             }
 
             Wektor wynik = new Wektor(wymiar);
@@ -50,7 +50,7 @@ namespace _3
         public static Wektor Dodaj(Wektor v1, Wektor v2)
         {
             if (v1.Wymiar != v2.Wymiar)
-                throw new ArgumentException("Wektory muszą mieć ten sam wymiar.");
+                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
 
             Wektor wynik = new Wektor(v1.Wymiar);
             for (byte i = 0; i < v1.Wymiar; i++)
@@ -60,10 +60,10 @@ namespace _3
             return wynik;
         }
 
-        public static Wektor Odejmij(Wektor v1, Wektor v2)
+        public static Wektor Odejmowanie(Wektor v1, Wektor v2)
         {
             if (v1.Wymiar != v2.Wymiar)
-                throw new ArgumentException("Wektory muszą mieć ten sam wymiar.");
+                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
 
             Wektor wynik = new Wektor(v1.Wymiar);
             for (byte i = 0; i < v1.Wymiar; i++)
@@ -73,7 +73,7 @@ namespace _3
             return wynik;
         }
 
-        public static Wektor Pomnóż(Wektor v, double skalar)
+        public static Wektor Mnozenie(Wektor v, double skalar)
         {
             Wektor wynik = new Wektor(v.Wymiar);
             for (byte i = 0; i < v.Wymiar; i++)
@@ -83,15 +83,15 @@ namespace _3
             return wynik;
         }
 
-        public static Wektor Pomnóż(double skalar, Wektor v)
+        public static Wektor Mnozenie(double skalar, Wektor v)
         {
-            return Pomnóż(v, skalar);
+            return Mnozenie(v, skalar);
         }
 
-        public static Wektor Podziel(Wektor v, double skalar)
+        public static Wektor Dzielenie(Wektor v, double skalar)
         {
             if (skalar == 0)
-                throw new ArgumentException("Dzielenie przez zero.");
+                throw new ArgumentException("Nie można dzielić przez zero");
 
             Wektor wynik = new Wektor(v.Wymiar);
             for (byte i = 0; i < v.Wymiar; i++)
