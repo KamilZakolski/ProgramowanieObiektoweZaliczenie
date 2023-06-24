@@ -1,20 +1,29 @@
 ﻿using _3;
 
-Wektor v1 = new Wektor(1, 2, 3);
-Wektor v2 = new Wektor(4, 5, 6);
-Wektor v3 = new Wektor(7, 8, 9);
+try
+{
+    Wektor v1 = new Wektor(3, 1, 2, 3);
+    Wektor v2 = new Wektor(2, 1, 2, 8);
 
-Wektor suma = Wektor.Suma(v1, v2, v3);
-Console.WriteLine("Suma: " + suma);
+    double iloczynSkalarny = Obliczenia.IloczynSkalarny(v1, v2);
+    Console.WriteLine("Iloczyn skalarny: " + iloczynSkalarny);
 
-Wektor roznica = v3 - v2;
-Console.WriteLine("Różnica: " + roznica);
+    Wektor suma = Wektor.Suma(v1, v2);
+    Console.WriteLine("Suma: " + suma);
 
-Wektor iloczynSkalar = v1 * 2.5;
-Console.WriteLine("Iloczyn skalarny: " + iloczynSkalar);
+    Wektor roznica = v1 - v2;
+    Console.WriteLine("Różnica: " + roznica);
 
-Wektor iloraz = v2 / 2;
-Console.WriteLine("Iloraz: " + iloraz);
+    Wektor iloczyn1 = v1 * 2.5;
+    Console.WriteLine("Iloczyn 1: " + iloczyn1);
 
-double dlugosc = v2.Dlugosc;
-Console.WriteLine("Długość: " + dlugosc);
+    Wektor iloczyn2 = 3.7 * v2;
+    Console.WriteLine("Iloczyn 2: " + iloczyn2);
+
+    Wektor iloraz = v1 / 2;
+    Console.WriteLine("Iloraz: " + iloraz);
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Wystąpił błąd: " + ex.Message);
+}

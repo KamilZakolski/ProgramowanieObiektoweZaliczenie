@@ -8,144 +8,72 @@ namespace _3
 {
     public class Wektor
     {
-        private double[] wspolrzedne;
+        private double[] współrzędne;
 
         public Wektor(byte wymiar)
         {
-            wspolrzedne = new double[wymiar];
+            współrzędne = new double[wymiar];
         }
 
-        public Wektor(params double[] wspolrzedne)
+        public Wektor(params double[] współrzędne)
         {
-            this.wspolrzedne = wspolrzedne;
-        }
-
-        public double Dlugosc
-        {
-            get { return IloczynSkalarny(this, this); }
-        }
-
-        public byte Wymiar
-        {
-            get { return (byte)wspolrzedne.Length; }
+            this.współrzędne = współrzędne;
         }
 
         public double this[byte indeks]
         {
-            get { return wspolrzedne[indeks]; }
+            get { return współrzędne[indeks]; }
+            set { współrzędne[indeks] = value; }
         }
 
-        public static double IloczynSkalarny(Wektor V, Wektor W)
+        public double Długość
         {
-            if (V.Wymiar != W.Wymiar)
-            {
-                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
-            }
-
-            double iloczynSkalarny = 0;
-            for (byte i = 0; i < V.Wymiar; i++)
-            {
-                iloczynSkalarny += V[i] * W[i];
-            }
-
-            return iloczynSkalarny;
+            get { return Math.Sqrt(Obliczenia.IloczynSkalarny(this, this)); }
         }
 
-        public static Wektor Suma(params Wektor[] Wektory)
+        public byte Wymiar
         {
-            if (Wektory.Length == 0)
-            {
-                throw new ArgumentException("Brak wektorów");
-            }
-
-            byte wymiar = Wektory[0].Wymiar;
-            for (int i = 1; i < Wektory.Length; i++)
-            {
-                if (Wektory[i].Wymiar != wymiar)
-                {
-                    throw new ArgumentException("Wektory muszą być tego samego wymiaru");
-                }
-            }
-
-            double[] sumaWspolrzednych = new double[wymiar];
-            foreach (Wektor w in Wektory)
-            {
-                for (byte i = 0; i < wymiar; i++)
-                {
-                    sumaWspolrzednych[i] += w[i];
-                }
-            }
-
-            return new Wektor(sumaWspolrzednych);
+            get { return (byte)współrzędne.Length; }
         }
 
-        public static Wektor operator +(Wektor V, Wektor W)
+        public static Wektor Suma(params Wektor[] wektory)
         {
-            if (V.Wymiar != W.Wymiar)
-            {
-                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
-            }
-
-            double[] sumaWspolrzednych = new double[V.Wymiar];
-            for (byte i = 0; i < V.Wymiar; i++)
-            {
-                sumaWspolrzednych[i] = V[i] + W[i];
-            }
-
-            return new Wektor(sumaWspolrzednych);
+            return Obliczenia.Suma(wektory);
         }
 
-        public static Wektor operator -(Wektor V, Wektor W)
+        public static Wektor operator +(Wektor v1, Wektor v2)
         {
-            if (V.Wymiar != W.Wymiar)
-            {
-                throw new ArgumentException("Wektory muszą być tego samego wymiaru");
-            }
-
-            double[] roznicaWspolrzednych = new double[V.Wymiar];
-            for (byte i = 0; i < V.Wymiar; i++)
-            {
-                roznicaWspolrzednych[i] = V[i] - W[i];
-            }
-
-            return new Wektor(roznicaWspolrzednych);
+            return Obliczenia.Dodaj(v1, v2);
         }
 
-        public static Wektor operator *(Wektor V, double skalar)
+        public static Wektor operator -(Wektor v1, Wektor v2)
         {
-            double[] noweWspolrzedne = new double[V.Wymiar];
-            for (byte i = 0; i < V.Wymiar; i++)
-            {
-                noweWspolrzedne[i] = V[i] * skalar;
-            }
-
-            return new Wektor(noweWspolrzedne);
+            return Obliczenia.Odejmij(v1, v2);
         }
 
-        public static Wektor operator *(double skalar, Wektor V)
+        public static Wektor operator *(Wektor v, double skalar)
         {
-            return V * skalar;
+            return Obliczenia.Pomnóż(v, skalar);
         }
 
-        public static Wektor operator /(Wektor V, double skalar)
+        public static Wektor operator *(double skalar, Wektor v)
         {
-            if (skalar == 0)
-            {
-                throw new ArgumentException("Skalar nie może równać się zero.");
-            }
-
-            double[] noweWspolrzedne = new double[V.Wymiar];
-            for (byte i = 0; i < V.Wymiar; i++)
-            {
-                noweWspolrzedne[i] = V[i] / skalar;
-            }
-
-            return new Wektor(noweWspolrzedne);
+            return Obliczenia.Pomnóż(skalar, v);
         }
+
+        public static Wektor operator /(Wektor v, double skalar)
+        {
+            return Obliczenia.Podziel(v, skalar);
+        }
+
+
 
         public override string ToString()
         {
-            return string.Join(", ", wspolrzedne);
+            string separator = " | ";
+            string result = string.Join(separator, współrzędne);
+            return $"({result})";
         }
+
     }
 }
