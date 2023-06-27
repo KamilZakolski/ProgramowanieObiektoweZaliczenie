@@ -70,7 +70,7 @@ namespace _3
 
         public override string ToString()
         {
-            string separator = " | ";
+            string separator = ", ";
             string result = string.Join(separator, wspolrzedne);
             return $"({result})";
         }
